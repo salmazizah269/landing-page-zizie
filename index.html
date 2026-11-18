@@ -234,6 +234,155 @@
   a.proj{color:inherit;cursor:pointer}
   a.proj:hover .p-btn{background:var(--primary)}
 
+  /* BUKU: bagian keahlian (halaman terbuka, kertas bertitik) */
+  .book{position:relative;display:grid;grid-template-columns:1fr 18px 1fr;margin-top:8px;border:1px solid var(--line);border-radius:14px;background:#fffef9;
+    box-shadow:0 1px 2px rgba(15,42,53,.05),0 22px 44px -22px rgba(8,145,178,.32)}
+  .page{position:relative;overflow:hidden;padding:30px 32px 28px;
+    background-image:radial-gradient(circle,#d3e6ec 1px,transparent 1.3px);background-size:22px 22px}
+  .page.left{border-radius:14px 0 0 14px}
+  .page.right{border-radius:0 14px 14px 0}
+  .spine{position:relative;background:linear-gradient(90deg,rgba(15,42,53,0),rgba(15,42,53,.12) 50%,rgba(15,42,53,0))}
+  .spine::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line)}
+  .folio{display:flex;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--line);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .page h3{margin:16px 0 8px;font-size:1.25rem;color:var(--ink)}
+  .book .skill{padding:11px 0}
+  .book .skill .bar{background:#e6f1f5}
+  .book .skill.reveal.in:hover{transform:none}
+  .ribbon{position:absolute;top:-1px;right:30px;width:20px;height:46px;background:var(--primary);
+    clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%)}
+  .page.right::after{content:"";position:absolute;right:0;bottom:0;width:36px;height:36px;
+    background:linear-gradient(135deg,transparent 50%,#dcebf1 50%,#c9dfe8)}
+
+  /* DIARY: bagian sertifikat */
+  .diary-link{display:flex;align-items:center;gap:40px;flex-wrap:wrap;width:fit-content;max-width:100%;color:inherit;perspective:900px}
+  .diary{position:relative;flex:none;width:190px;height:250px;border-radius:6px 14px 14px 6px;
+    background:linear-gradient(135deg,#0e7490 0%,#0b1a24 85%);
+    box-shadow:0 20px 30px -14px rgba(11,26,36,.55),inset 0 1px 0 rgba(255,255,255,.14);
+    transform:rotateY(-14deg);transform-origin:left center;transition:transform .45s ease}
+  .diary-link:hover .diary{transform:rotateY(-26deg) translateY(-3px)}
+  .diary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:20px;border-radius:6px 0 0 6px;background:rgba(0,0,0,.28);border-right:2px dashed rgba(255,255,255,.3)}
+  .diary::after{content:"";position:absolute;right:-6px;top:5px;bottom:5px;width:8px;border-radius:0 3px 3px 0;
+    background:repeating-linear-gradient(180deg,#f3f6f8 0 2px,#d5dee3 2px 3px)}
+  .diary-band{position:absolute;right:26px;top:0;bottom:0;width:9px;background:rgba(0,0,0,.35)}
+  .diary-label{position:absolute;left:42px;right:44px;top:50%;transform:translateY(-50%);padding:12px 6px;text-align:center;
+    background:#fffef9;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+  .diary-label small{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .diary-label b{display:block;font-size:1rem;color:var(--ink)}
+  .diary-info{max-width:340px}
+  .diary-info h3{margin-bottom:6px;font-size:1.25rem}
+  .diary-info p{margin-bottom:16px;color:var(--muted)}
+
+  @media(max-width:760px){
+    .book{grid-template-columns:1fr}
+    .spine{height:16px;background:linear-gradient(180deg,rgba(15,42,53,0),rgba(15,42,53,.12) 50%,rgba(15,42,53,0))}
+    .spine::after{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px}
+    .page{padding:24px 20px}
+    .page.left,.page.right{border-radius:14px}
+    .ribbon{right:20px}
+    .diary-link{gap:28px}
+    .diary{width:150px;height:200px}
+    .diary-label{left:34px;right:36px;padding:9px 4px}
+  }
+
+  /* PENGALAMAN: latar luar angkasa (nebula, bintang, planet) */
+  .space{position:relative;overflow:hidden;color:#e6f6fb;
+    background:
+      radial-gradient(ellipse 60% 50% at 12% 18%,rgba(124,58,237,.36),transparent 70%),
+      radial-gradient(ellipse 55% 45% at 88% 82%,rgba(8,145,178,.42),transparent 70%),
+      linear-gradient(180deg,#050b14 0%,#0a1424 100%)}
+  .space .container{position:relative;z-index:1}
+  .space h2{color:#fff}
+  .space h2::after{background:linear-gradient(90deg,#a5f3fc,var(--lilac),var(--pink))}
+  .space .exp{border-top-color:rgba(255,255,255,.16)}
+  .space .exp-row{border-bottom-color:rgba(255,255,255,.16)}
+  .space .exp-date{color:#8fc9d8}
+  .space .exp-body h3{color:#fff}
+  .space .exp-body .org{color:#67e8f9}
+  .space .exp-body ul{color:#b9d5df}
+  .planet{position:absolute;z-index:0;right:6%;top:12%;width:96px;height:96px;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle at 30% 30%,#a5f3fc,#0e7490 55%,#0b1a24);
+    box-shadow:inset -10px -10px 24px rgba(0,0,0,.5),0 0 40px rgba(34,211,238,.25);animation:float 8s ease-in-out infinite}
+  .planet::after{content:"";position:absolute;left:-34px;right:-34px;top:50%;height:22px;margin-top:-11px;
+    border:2px solid rgba(196,181,253,.7);border-radius:50%;transform:rotate(-18deg)}
+  @media(max-width:760px){
+    .planet{width:56px;height:56px;right:4%;top:5%}
+    .planet::after{left:-20px;right:-20px;height:14px;margin-top:-7px}
+  }
+  @media(prefers-reduced-motion:reduce){.planet{animation:none}}
+
+  /* Kartu portofolio (GitHub, LinkedIn, Medium): berwarna lembut, tidak putih polos */
+  .portfolio .project{border-color:#bfe6f0;box-shadow:inset 0 3px 0 var(--cyan-light),0 2px 10px rgba(8,145,178,.08);
+    background:linear-gradient(135deg,#e3f8fc 0%,#f4f1ff 100%)}
+  .portfolio .project:nth-child(2){border-color:#c3d7f4;box-shadow:inset 0 3px 0 #60a5fa,0 2px 10px rgba(59,130,246,.1);
+    background:linear-gradient(135deg,#e6f0ff 0%,#e3f8fc 100%)}
+  .portfolio .project:nth-child(3){border-color:#dccdf3;box-shadow:inset 0 3px 0 var(--lilac),0 2px 10px rgba(139,92,246,.1);
+    background:linear-gradient(135deg,#f1ebff 0%,#ffeaf5 100%)}
+  .portfolio .project:hover{box-shadow:inset 0 3px 0 var(--primary),0 14px 28px rgba(8,145,178,.2)}
+
+  /* TENTANG SAYA: panel air realistis (kedalaman, sinar cahaya, kaustik, riak permukaan, gelembung) */
+  .elem{position:relative;overflow:hidden;padding:48px 40px 40px;border-radius:18px;color:#eafcff;
+    background:linear-gradient(180deg,#3cc0dc 0%,#0e8fb0 12%,#0b6f94 40%,#084b6e 75%,#052f4a 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 36px -18px rgba(5,47,74,.7)}
+  .elem::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:18px;
+    box-shadow:inset 0 0 90px rgba(2,20,35,.55)}
+  .w-rays{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.8;
+    background:repeating-linear-gradient(105deg,rgba(255,255,255,0) 0 46px,rgba(220,250,255,.16) 70px,rgba(255,255,255,0) 110px);
+    background-size:220px 100%;
+    -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%);
+    animation:rays 22s linear infinite}
+  .w-caustics{position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.5;
+    background-image:
+      repeating-radial-gradient(circle at 30% 40%,transparent 0 9px,rgba(190,245,255,.32) 10px 11px,transparent 12px 24px),
+      repeating-radial-gradient(circle at 70% 60%,transparent 0 11px,rgba(190,245,255,.26) 12px 13px,transparent 14px 28px);
+    background-size:130px 90px,110px 80px;
+    -webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%);
+    animation:caustic 16s linear infinite}
+  .surf{position:absolute;left:0;top:0;z-index:1;width:200%;height:30px;pointer-events:none;animation:wave 11s linear infinite}
+  .surf path{fill:rgba(225,250,255,.38)}
+  .surf.s2{top:-6px;opacity:.7;animation-duration:7s;animation-direction:reverse}
+  .bub{position:absolute;z-index:1;bottom:-24px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;pointer-events:none;opacity:0;
+    border:1px solid rgba(255,255,255,.55);
+    background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.75),rgba(255,255,255,.08) 60%);
+    animation:rise var(--d) ease-in infinite;animation-delay:var(--dl)}
+  .elem p{position:relative;z-index:2;max-width:780px;font-size:1.02rem;text-shadow:0 1px 6px rgba(2,20,35,.5)}
+  @keyframes wave{to{transform:translateX(-50%)}}
+  @keyframes rays{to{background-position:220px 0}}
+  @keyframes caustic{to{background-position:130px 90px,-110px 80px}}
+  @keyframes rise{0%{transform:translate(0,0);opacity:0}12%{opacity:.9}100%{transform:translate(12px,-300px);opacity:0}}
+  @media(max-width:760px){.elem{padding:40px 20px 32px}}
+  @media(prefers-reduced-motion:reduce){.w-rays,.w-caustics,.surf,.bub{animation:none}.bub{display:none}}
+
+  /* NAV bertema luar angkasa: planet mengitari menu (Tentang Saya, Keahlian, dst.) */
+  nav{overflow:hidden;background:rgba(8,16,28,.95);border-bottom:1px solid rgba(255,255,255,.1)}
+  nav::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      radial-gradient(1px 1px at 18px 14px,#fff,transparent),
+      radial-gradient(1.4px 1.4px at 90px 40px,#a5f3fc,transparent),
+      radial-gradient(1px 1px at 150px 22px,#fff,transparent),
+      radial-gradient(1px 1px at 60px 50px,#fff,transparent);
+    background-size:180px 60px;animation:twinkle 4s ease-in-out infinite alternate}
+  nav .container{position:relative;z-index:1}
+  nav .logo{color:#a5f3fc}
+  nav ul a{color:#cfeaf2}
+  nav ul a:hover{background:rgba(255,255,255,.1);color:#fff}
+  .menu{position:relative}
+  .menu ul{position:relative;z-index:1}
+  /* Planet kecil hanya muncul mengitari menu yang dipilih / sedang dilihat */
+  nav ul a{position:relative}
+  nav ul a.active{color:#fff;background:rgba(255,255,255,.08)}
+  .orb{display:none;position:absolute;inset:-7px -12px;z-index:-1;pointer-events:none}
+  nav ul a.active .orb{display:block}
+  .orb::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(165,243,252,.22)}
+  .pt{position:absolute;left:0;top:0;width:0;height:0;
+    animation:ox 2.4s cubic-bezier(.37,0,.63,1) infinite alternate,oy 2.4s cubic-bezier(.37,0,.63,1) infinite alternate -1.2s}
+  .pt i{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,#e0fbff,#22d3ee 60%,#0e7490);box-shadow:0 0 8px rgba(34,211,238,.8)}
+  @keyframes ox{from{left:0%}to{left:100%}}
+  @keyframes oy{from{top:0%}to{top:100%}}
+  @media(max-width:760px){.orb{inset:-5px -8px}}
+  @media(prefers-reduced-motion:reduce){nav::before{animation:none}.pt{display:none}}
+
   /* RESPONSIVE */
   @media(max-width:760px){
     nav .container{flex-direction:column;padding:8px 0;gap:4px}
@@ -262,14 +411,17 @@
 <nav>
   <div class="container">
     <a href="#home" class="logo">Zizie.</a>
-    <ul>
-      <li><a href="#about">Tentang Saya</a></li>
-      <li><a href="#skills">Keahlian</a></li>
-      <li><a href="#portfolio">Portofolio</a></li>
-      <li><a href="#pengalaman">Pengalaman</a></li>
-      <li><a href="#sertifikasi">Sertifikasi</a></li>
-      <li><a href="#kontak">Kontak</a></li>
-    </ul>
+    <div class="menu">
+      <!-- Menu yang dipilih akan dikitari planet kecil (class "active" diatur oleh script di bawah) -->
+      <ul>
+        <li><a href="#about">Tentang Saya<span class="orb" aria-hidden="true"><i class="pt"><i></i></i></span></a></li>
+        <li><a href="#skills">Keahlian<span class="orb" aria-hidden="true"><i class="pt"><i></i></i></span></a></li>
+        <li><a href="#portfolio">Portofolio<span class="orb" aria-hidden="true"><i class="pt"><i></i></i></span></a></li>
+        <li><a href="#pengalaman">Pengalaman<span class="orb" aria-hidden="true"><i class="pt"><i></i></i></span></a></li>
+        <li><a href="#sertifikasi">Sertifikasi<span class="orb" aria-hidden="true"><i class="pt"><i></i></i></span></a></li>
+        <li><a href="#kontak">Kontak<span class="orb" aria-hidden="true"><i class="pt"><i></i></i></span></a></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -303,7 +455,17 @@
   <div class="container">
     <h2>Tentang Saya</h2>
     <div class="about-grid" style="grid-template-columns:1fr">
-      <div class="card">
+      <div class="elem">
+        <div class="w-rays"></div>
+        <div class="w-caustics"></div>
+        <svg class="surf" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q75 34 150 14 T300 14 T450 14 T600 14 T750 14 T900 14 T1050 14 T1200 14 V0 H0Z"/></svg>
+        <svg class="surf s2" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q75 34 150 14 T300 14 T450 14 T600 14 T750 14 T900 14 T1050 14 T1200 14 V0 H0Z"/></svg>
+        <i class="bub" style="--x:7%;--s:9px;--d:9s;--dl:0s"></i>
+        <i class="bub" style="--x:22%;--s:6px;--d:7s;--dl:2.5s"></i>
+        <i class="bub" style="--x:46%;--s:11px;--d:11s;--dl:1s"></i>
+        <i class="bub" style="--x:63%;--s:5px;--d:8s;--dl:4s"></i>
+        <i class="bub" style="--x:81%;--s:8px;--d:10s;--dl:3s"></i>
+        <i class="bub" style="--x:93%;--s:6px;--d:7.5s;--dl:5.5s"></i>
         <p>Saya Salma Nurul Azizah, biasa dipanggil Zizie, mahasiswa Teknologi Informasi di Politeknik Negeri Madiun. Saya tertarik pada web development, data science, dan AI, serta senang bekerja dalam tim untuk membangun solusi digital.</p>
       </div>
     </div>
@@ -315,16 +477,26 @@
   <div class="container">
     <h2>Keahlian</h2>
     <p class="lead">Keterampilan yang saya pelajari dan gunakan dalam tugas kuliah maupun proyek tim.</p>
-    <div class="skills">
+    <div class="book">
       <!-- Persentase hanya perkiraan: sesuaikan dengan kemampuan Anda -->
-      <div class="card skill"><div class="row"><span>Web Development (HTML, CSS, JS)</span><span>80%</span></div><div class="bar"><span style="width:80%"></span></div></div>
-      <div class="card skill"><div class="row"><span>Laravel / PHP</span><span>70%</span></div><div class="bar"><span style="width:70%"></span></div></div>
-      <div class="card skill"><div class="row"><span>UI/UX Design</span><span>70%</span></div><div class="bar"><span style="width:70%"></span></div></div>
-      <div class="card skill"><div class="row"><span>Mobile Programming</span><span>60%</span></div><div class="bar"><span style="width:60%"></span></div></div>
-      <div class="card skill"><div class="row"><span>Cyber Security</span><span>65%</span></div><div class="bar"><span style="width:65%"></span></div></div>
-      <div class="card skill"><div class="row"><span>Data Science</span><span>55%</span></div><div class="bar"><span style="width:55%"></span></div></div>
-      <div class="card skill"><div class="row"><span>Artificial Intelligence</span><span>50%</span></div><div class="bar"><span style="width:50%"></span></div></div>
-      <div class="card skill"><div class="row"><span>Kerja Tim &amp; Dokumentasi</span><span>85%</span></div><div class="bar"><span style="width:85%"></span></div></div>
+      <div class="page left">
+        <div class="folio"><span>Halaman 01</span><span>Build</span></div>
+        <h3>Pengembangan</h3>
+        <div class="skill"><div class="row"><span>Web Development (HTML, CSS, JS)</span><span>80%</span></div><div class="bar"><span style="width:80%"></span></div></div>
+        <div class="skill"><div class="row"><span>Laravel / PHP</span><span>70%</span></div><div class="bar"><span style="width:70%"></span></div></div>
+        <div class="skill"><div class="row"><span>UI/UX Design</span><span>70%</span></div><div class="bar"><span style="width:70%"></span></div></div>
+        <div class="skill"><div class="row"><span>Mobile Programming</span><span>60%</span></div><div class="bar"><span style="width:60%"></span></div></div>
+      </div>
+      <div class="spine"></div>
+      <div class="page right">
+        <span class="ribbon"></span>
+        <div class="folio"><span>Halaman 02</span><span>Secure &amp; Analyze</span></div>
+        <h3>Keamanan, Data &amp; Kolaborasi</h3>
+        <div class="skill"><div class="row"><span>Cyber Security</span><span>65%</span></div><div class="bar"><span style="width:65%"></span></div></div>
+        <div class="skill"><div class="row"><span>Data Science</span><span>55%</span></div><div class="bar"><span style="width:55%"></span></div></div>
+        <div class="skill"><div class="row"><span>Artificial Intelligence</span><span>50%</span></div><div class="bar"><span style="width:50%"></span></div></div>
+        <div class="skill"><div class="row"><span>Kerja Tim &amp; Dokumentasi</span><span>85%</span></div><div class="bar"><span style="width:85%"></span></div></div>
+      </div>
     </div>
     <div class="tags">
       <span>Laravel</span><span>PHP</span><span>HTML &amp; CSS</span><span>JavaScript</span>
@@ -394,7 +566,10 @@
 </section>
 
 <!-- PENGALAMAN -->
-<section id="pengalaman">
+<section id="pengalaman" class="space">
+  <div class="stars"></div>
+  <div class="shoot"></div><div class="shoot"></div>
+  <div class="planet"></div>
   <div class="container">
     <h2>Pengalaman</h2>
     <div class="exp">
@@ -427,15 +602,17 @@
   <div class="container">
     <h2>Sertifikasi</h2>
     <p class="lead">Sertifikat dan pelatihan yang pernah saya ikuti.</p>
-    <div class="certs" style="grid-template-columns:minmax(260px,520px)">
-      <!-- GANTI LINK_GOOGLE_DRIVE dengan link folder Google Drive sertifikat Anda
-           (pastikan akses folder: "Siapa saja yang memiliki link" / Anyone with the link) -->
-      <a class="card cert" href="https://drive.google.com/drive/folders/1tfWxA-_3oZgnVGoVdi5qQnh18NcgztLW?usp=sharing" target="_blank" rel="noopener">
+    <a class="diary-link" href="https://drive.google.com/drive/folders/1tfWxA-_3oZgnVGoVdi5qQnh18NcgztLW?usp=sharing" target="_blank" rel="noopener">
+      <div class="diary" aria-hidden="true">
+        <span class="diary-band"></span>
+        <div class="diary-label"><small>Koleksi</small><b>Sertifikat</b></div>
+      </div>
+      <div class="diary-info">
         <h3>Kumpulan Sertifikat</h3>
-        <div class="issuer">Seluruh sertifikat dan pelatihan saya tersimpan di Google Drive.</div>
-        <span class="p-btn" style="margin-top:14px">Buka Google Drive &rarr;</span>
-      </a>
-    </div>
+        <p>Seluruh sertifikat dan pelatihan saya tersimpan di Google Drive.</p>
+        <span class="p-btn">Buka Google Drive &rarr;</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -470,7 +647,7 @@
 
   // Efek muncul halus saat di-scroll
   (function(){
-    var els=document.querySelectorAll('h2,.card,.proj,.exp-row,.skill');
+    var els=document.querySelectorAll('h2,.card,.proj,.exp-row,.skill,.book,.diary-link,.elem');
     if(!('IntersectionObserver' in window)){return;}
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -497,14 +674,14 @@
       parent.appendChild(s);return s;
     }
     // Hero & kontak: tersebar
-    document.querySelectorAll('.hero,.contact').forEach(function(box){
+    document.querySelectorAll('.hero,.contact,.space').forEach(function(box){
       for(var i=0;i<22;i++){
         spark(box,rnd(2,98)+'%',rnd(4,94)+'%',rnd(8,20),['','pink','gold','lilac'][i%4],rnd(0,4),rnd(2.2,4));
       }
     });
     // Di samping kiri-kanan setiap judul
     document.querySelectorAll('h2').forEach(function(h){
-      var onDark=!!h.closest('.contact');
+      var onDark=!!h.closest('.contact,.space');
       var c=onDark?'':'dark';
       [[ 'calc(100% + 8px)','-6px',18,c,0,2.6],
        [ 'calc(100% + 30px)','14px',11,'pink',.7,3],
@@ -515,6 +692,24 @@
         s.classList.add('h2-spark');
       });
     });
+  })();
+
+  // Menu aktif: planet mengitari menu yang diklik atau bagian yang sedang dilihat
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('nav ul a'));
+    var map=links.map(function(a){return {a:a,sec:document.querySelector(a.getAttribute('href'))};}).filter(function(x){return x.sec;});
+    var lock=0;
+    function setActive(a){links.forEach(function(l){l.classList.toggle('active',l===a);});}
+    links.forEach(function(a){a.addEventListener('click',function(){setActive(a);lock=Date.now()+1000;});});
+    function spy(){
+      if(Date.now()<lock){return;}
+      var y=window.scrollY+120,cur=null;
+      map.forEach(function(x){if(x.sec.getBoundingClientRect().top+window.scrollY<=y){cur=x.a;}});
+      if(map.length&&window.innerHeight+window.scrollY>=document.body.offsetHeight-4){cur=map[map.length-1].a;}
+      setActive(cur);
+    }
+    window.addEventListener('scroll',spy,{passive:true});
+    spy();
   })();
 
   // Jejak sparkle mengikuti kursor (hanya desktop)
