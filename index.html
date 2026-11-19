@@ -215,7 +215,7 @@
   }
 
   /* PROYEK */
-  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:20px}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;margin-top:20px}
   .proj{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(8,145,178,.06);transition:transform .25s,box-shadow .25s}
   .proj:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(8,145,178,.2)}
   .p-img{position:relative;height:190px;background:linear-gradient(135deg,#0e7490,#0b1a24);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-weight:600;letter-spacing:.06em;overflow:hidden}
@@ -383,6 +383,28 @@
   @media(max-width:760px){.orb{inset:-5px -8px}}
   @media(prefers-reduced-motion:reduce){nav::before{animation:none}.pt{display:none}}
 
+  /* PALET PROFESIONAL: krem & abu-abu */
+  :root{--cream:#f7f1e6;--cream-2:#fbf7ef;--cream-line:#e6dcc8;--slate:#374151}
+  #sertifikasi{background:linear-gradient(180deg,#fbf7ef 0%,#f3ead8 100%)}
+  .proj{background:#fffdf8;border-color:var(--cream-line)}
+  .p-img{background:linear-gradient(135deg,#6b7280,#374151)}
+  .p-tech span{background:#efe8d8;color:#4b5563}
+  .p-btn{background:var(--slate)}
+  .tags span{background:#f6efe0;color:#4b5563;border:1px solid var(--cream-line)}
+  footer{background:#23262d;color:#cfc8b8}
+
+  /* Ikon garis (buku, laptop, monitor) di judul bagian */
+  .ico{width:.85em;height:.85em;margin-right:10px;vertical-align:-.1em;color:var(--primary-dark);
+    fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  h4.sub .ico{width:1.05em;height:1.05em;margin-right:8px;vertical-align:-.2em}
+  .space .ico{color:#67e8f9}
+
+  /* Ilustrasi meja kerja (tumpukan buku + laptop) di hero, hanya layar lebar */
+  .hero-desk{display:none}
+  @media(min-width:1200px){
+    .hero-desk{display:block;position:absolute;z-index:0;right:calc(50% - 560px);bottom:34px;width:210px;pointer-events:none;opacity:.95}
+  }
+
   /* RESPONSIVE */
   @media(max-width:760px){
     nav .container{flex-direction:column;padding:8px 0;gap:4px}
@@ -428,6 +450,24 @@
 <!-- HERO -->
 <header class="hero" id="home">
   <div class="stars"></div>
+  <!-- Ilustrasi meja kerja: tumpukan buku dan laptop -->
+  <svg class="hero-desk" viewBox="0 0 260 190" aria-hidden="true">
+    <line x1="6" y1="172" x2="254" y2="172" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"/>
+    <rect x="14" y="152" width="96" height="20" rx="3" fill="#f3ead8"/>
+    <line x1="24" y1="162" x2="100" y2="162" stroke="#d9cfb8" stroke-width="2"/>
+    <rect x="22" y="132" width="80" height="20" rx="3" fill="#d9cfb8"/>
+    <line x1="32" y1="142" x2="92" y2="142" stroke="#b8ad94" stroke-width="2"/>
+    <rect x="18" y="112" width="86" height="20" rx="3" fill="#9ca3af"/>
+    <line x1="28" y1="122" x2="94" y2="122" stroke="#6b7280" stroke-width="2"/>
+    <path d="M86 112v14l5-4 5 4v-14z" fill="#22d3ee"/>
+    <rect x="124" y="160" width="130" height="12" rx="4" fill="#9ca3af"/>
+    <rect x="136" y="84" width="106" height="76" rx="7" fill="#1f2937" stroke="#cfc9bb" stroke-width="3"/>
+    <rect x="148" y="98" width="38" height="5" rx="2.5" fill="#22d3ee"/>
+    <rect x="148" y="110" width="74" height="4" rx="2" fill="#e5e7eb"/>
+    <rect x="148" y="120" width="58" height="4" rx="2" fill="#9ca3af"/>
+    <rect x="148" y="130" width="68" height="4" rx="2" fill="#e5e7eb"/>
+    <rect x="148" y="140" width="40" height="4" rx="2" fill="#9ca3af"/>
+  </svg>
   <div class="shoot"></div><div class="shoot"></div><div class="shoot"></div>
   <div class="container">
     <div class="photo-wrap">
@@ -473,9 +513,9 @@
 </section>
 
 <!-- SKILLS & PORTFOLIO -->
-<section id="skills" style="background:#fff">
+<section id="skills" style="background:linear-gradient(180deg,#fff1f6 0%,#fdf2f8 100%)">
   <div class="container">
-    <h2>Keahlian</h2>
+    <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5A2.5 2.5 0 0 1 6.5 19H20"/></svg>Keahlian</h2>
     <p class="lead">Keterampilan yang saya pelajari dan gunakan dalam tugas kuliah maupun proyek tim.</p>
     <div class="book">
       <!-- Persentase hanya perkiraan: sesuaikan dengan kemampuan Anda -->
@@ -504,7 +544,7 @@
       <span>Keamanan Aplikasi Web</span><span>Riset Jurnal</span>
     </div>
 
-    <h4 class="sub" id="portfolio">Portofolio &amp; Proyek</h4>
+    <h4 class="sub" id="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="10" rx="1.5"/><path d="M2 19h20"/></svg>Portofolio &amp; Proyek</h4>
     <p class="lead" style="margin-bottom:20px">Karya, pengalaman, dan tulisan saya bisa dilihat langsung melalui profil berikut.</p>
     <div class="portfolio">
       <a class="card project" href="https://github.com/salmazizah269" target="_blank" rel="noopener">
@@ -527,7 +567,7 @@
       </a>
     </div>
 
-    <h4 class="sub">Proyek</h4>
+    <h4 class="sub"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M10 8.5 8 10l2 1.5M14 8.5l2 1.5-2 1.5"/></svg>Proyek</h4>
     <div class="proj-grid">
       <!-- Seluruh kartu proyek bisa diklik. Gambar: simpan sebagai proyek1.jpg, proyek2.jpg, dst. di folder yang sama.
            Untuk menambah proyek, salin satu blok a.proj lalu ganti isi dan href-nya. -->
@@ -561,6 +601,16 @@
           <span class="p-btn">Go to project &rarr;</span>
         </div>
       </a>
+      <a class="proj" href="https://tempatles.id/" target="_blank" rel="noopener">
+        <div class="p-img"><img src="proyek4.jpg" alt="Gambar Proyek Tempatles.id" onerror="this.remove()"></div>
+        <div class="p-body">
+          <span class="tag">Proyek Tim &middot; Magang</span>
+          <h3>Tempatles.id</h3>
+          <p>Platform pencocokan tutor dan siswa yang dikembangkan bersama tim selama magang di PT Imersa Solusi Teknologi. Kontribusi saya mencakup perancangan landing page dan halaman informasi, sistem pencocokan tutor dan siswa berbasis Google Sheets dan Google Apps Script, serta optimasi SEO dengan pemantauan performa melalui Google Search Console.</p>
+          <div class="p-tech"><span>Web Development</span><span>Google Apps Script</span><span>SEO</span></div>
+          <span class="p-btn">Go to project &rarr;</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -584,6 +634,16 @@
         </div>
       </div>
       <div class="exp-row">
+        <div class="exp-date">Juni 2025 &ndash; Juni 2026</div>
+        <div class="exp-body">
+          <h3>Pengurus Tim Voli</h3>
+          <div class="org">Tim Voli</div>
+          <ul>
+            <li>Terlibat dalam pengelolaan dan koordinasi kegiatan tim selama satu periode kepengurusan.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-row">
         <div class="exp-date">Juli 2024 &ndash; Sekarang</div>
         <div class="exp-body">
           <h3>Mahasiswa Teknologi Informasi</h3>
@@ -600,7 +660,7 @@
 <!-- SERTIFIKASI -->
 <section id="sertifikasi">
   <div class="container">
-    <h2>Sertifikasi</h2>
+    <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5A2.5 2.5 0 0 1 6.5 19H20"/></svg>Sertifikasi</h2>
     <p class="lead">Sertifikat dan pelatihan yang pernah saya ikuti.</p>
     <a class="diary-link" href="https://drive.google.com/drive/folders/1tfWxA-_3oZgnVGoVdi5qQnh18NcgztLW?usp=sharing" target="_blank" rel="noopener">
       <div class="diary" aria-hidden="true">
@@ -734,4 +794,4 @@
   })();
 </script>
 </body>
-</html>
+</html>s
